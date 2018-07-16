@@ -30,6 +30,9 @@ var cssState={
     player1Icon = game.add.sprite(game.world.width * .5 -50, game.world.height * .5, 'player1cssIcon');
     player2Icon = game.add.sprite(game.world.width * .5 +50, game.world.height * .5, 'player2cssIcon');
 
+    player1Icon.scale.setTo(1.5,1.5);
+    player2Icon.scale.setTo(1.5,1.5);
+    
     player1Icon.inputEnabled = true;
     player2Icon.inputEnabled = true;
 
