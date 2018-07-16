@@ -72,7 +72,8 @@ var loadState={
 				game.load.audio('respawnSound', 'https://ufosc.github.io/marston-vs-west/States/Assets/respawnSound.wav');
 				game.load.audio('itemSound', 'https://ufosc.github.io/marston-vs-west/States/Assets/itemSound.wav');
 				
-		
+				game.load.image('orangeStock', 'https://ufosc.github.io/marston-vs-west/States/Assets/orangeStock.png');
+				game.load.image('blueStock', 'https://ufosc.github.io/marston-vs-west/States/Assets/blueStock.png');
 				game.load.spritesheet('gator', 'https://ufosc.github.io/marston-vs-west/States/Assets/gatorBat.png', 32, 32);
 				game.load.image('blueDamageBox', 'https://ufosc.github.io/marston-vs-west/States/Assets/damageBorder1.png');
 				game.load.image('orangeDamageBox', 'https://ufosc.github.io/marston-vs-west/States/Assets/damageBorder2.png');
