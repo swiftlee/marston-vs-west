@@ -2295,7 +2295,7 @@ else
   console.log("Player 2 is lab");
 }
 
-
+var multimanmode = false;
 
 if(multimanmode == true){
     Player3 =  new lab(charName2,  0, 3, game.world.width*0.5,game.world.height*0.5, controlOptionAI);
