@@ -356,9 +356,9 @@ var playState = {
             // Create the ground.
             var ground = platforms.create(110, game.world.height - 100, 'ground');
             var plat1 = miniPlatforms.create(110, game.world.height - 250, 'ground');
-            var plat2 = miniPlatforms.create(game.world.width - 300, game.world.height - 250, 'ground');
+            plat2 = miniPlatforms.create(game.world.width - 300, game.world.height - 250, 'ground');
             plat1.body.collideWorldBounds = true;
-            plat2.body.collideWorldBounds = true;
+            plat2.body.collideWorldBounds = false;
             plat1.body.checkCollision.down = false;
             plat2.body.checkCollision.down = false;
             plat1.body.immovable = true;
@@ -664,7 +664,14 @@ var playState = {
             else {
                 game.physics.arcade.collide(Player2.character, miniPlatforms);
             }
-        }
+            //moving plat2
+            if (plat2.body.position.x < game.world.width - 299) {
+                plat2.body.velocity.x = 60;
+            }
+            if (plat2.body.position.x > game.world.width) {
+                plat2.body.velocity.x = -60;
+            }
+                }
 
         game.physics.arcade.collide(Player1.character, platforms);
         game.physics.arcade.collide(Player2.character, platforms);

@@ -80,6 +80,8 @@ var j = 0; // temporary variable
 var energyText;
 var playerstate; //may be implemented later on in fighter class
 
+//moving platform for west
+var plat2;
 
 var controller;
 var pun;
