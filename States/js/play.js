@@ -213,7 +213,7 @@ var playState = {
                 Fighter.deathBlast.visible = false;
             }
             else {
-                Fighter.character.body.gravity.y = 650;
+                Fighter.character.body.gravity.y = Fighter.getBaseGravity();
             }
             //Makes character alpha to signify invulnerability
             if (Fighter.m <= 300) {

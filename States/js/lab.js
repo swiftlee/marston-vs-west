@@ -2,7 +2,8 @@ class lab extends Fighter {
     constructor(character, health, lives, startx, starty, controlnum) {
 
         super(character, health, lives, startx, starty, controlnum);
-        this.character.body.gravity.y = 650;
+        this.character.body.gravity.y = 2000;
+        this.baseGravity = 2000;
         //console.log("we created the lab construtor");
 
         this.jumpSpeed = 25;

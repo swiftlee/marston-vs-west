@@ -103,7 +103,8 @@ class Fighter {
 
         //  Player physics properties. Give the little guy a slight bounce.
         this.character.body.bounce.y = 0;//0.2;
-        this.character.body.gravity.y = 650;
+        this.character.body.gravity.y = 1350;
+        this.baseGravity = 1350
         this.character.body.collideWorldBounds = false;
 
 
@@ -1137,5 +1138,9 @@ class Fighter {
             }
         }
         //end of update input function
+    }
+    getBaseGravity()
+    {
+    	return this.baseGravity;
     }
 }
