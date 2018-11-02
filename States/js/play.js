@@ -672,6 +672,31 @@ var playState = {
                 plat2.body.velocity.x = -60;
             }
                 }
+                
+    if (chosenStageName == 'npbPic') {
+        if (Player1.getdown()) {
+            Player1.character.body.immovable = false;
+        }
+        else {
+            game.physics.arcade.collide(Player1.character, miniPlatforms);
+        }
+        if (Player2.getdown()) {
+            Player2.character.body.immovable = false;
+        }
+        else {
+            game.physics.arcade.collide(Player2.character, miniPlatforms);
+        }
+        //moving plat2
+        if (plat2.body.position.y > game.world.height - 260) {
+            plat2.body.velocity.y = -60;
+        }
+        if (plat2.body.position.y < game.world.height - 500) {
+            plat2.body.velocity.y =  60;
+        }
+            }            
+       
+
+                
 
         game.physics.arcade.collide(Player1.character, platforms);
         game.physics.arcade.collide(Player2.character, platforms);

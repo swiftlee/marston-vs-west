@@ -42,6 +42,7 @@ var player1Icon;
 var player2Icon;
 var marstonPicture;
 var westPicture;
+var npbPicture;
 var mob;
 var people;
 
@@ -197,6 +198,7 @@ var gameSeconds = 0;
 
 var stage1;
 var stage2;
+var stage3;
 var chosenStageName;
 var chosenMap;
 

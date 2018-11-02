@@ -49,6 +49,9 @@ var sssState = {
 
         stage2 = new Stage(game.world.width * .5 + 200, game.world.height * .25 + 50, 'westPic');
 
+        stage3 = new Stage(game.world.width * .5 + 200, game.world.height * .25 + 200, 'npbPic');
+
+
         buttonSound = game.add.audio('buttonSound');
         buttonSound.volume -= .5;
 
