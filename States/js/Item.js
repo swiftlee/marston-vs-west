@@ -25,6 +25,9 @@ class Item {
         this.type.body.onWorldBounds = new Phaser.Signal();
         this.type.body.onWorldBounds.add(this.respawnItem, this);
 
+        //helmet counter
+        this.counter = 0;
+
     }
 
     useItem(target) { //Only call if item has a user and is pickedUp
@@ -54,11 +57,42 @@ class Item {
                 target.health += 10;
                 game.time.events.add(Phaser.Timer.SECOND * 2, this.spawnItem, this); //After 2 seconds, spawn the item
             }
-            else if (this.type.key == 'helmet') //Current respawns player without decrementing lives
+            else if (this.type.key == 'book') //Current respawns player without decrementing lives
             {
                 itemSound.play();
                 target.lives++; //respawn decrements lives, this increments lives first
                 this.gameRef.respawn(target);
+                game.time.events.add(Phaser.Timer.SECOND * 2, this.spawnItem, this); //After 2 seconds, spawn the item
+                this.type.destroy();
+                this.type = null;
+            }
+            else if (this.type.key == 'helmet')
+            {
+                itemSound.play();
+                target.invincible = true;
+                let invhelm = game.time.events.loop(Phaser.Timer.SECOND * 0.5, () => {
+                    this.counter++;
+                    if (this.counter % 2 == 0) {
+                        target.character.alpha = 0.5;
+                    }
+                    else {
+                        target.character.alpha = 1;
+                    }
+                    if (this.respawnSwitch == true){
+                        target.invincible = false;
+                        game.time.events.remove(invhelm);
+                        target.character.alpha = 1;
+                        this.counter = 0;
+                    }
+
+                }, this);
+                game.time.events.add(Phaser.Timer.SECOND * 10, () => {
+                    target.invincible = false;
+                    game.time.events.remove(invhelm);
+                    target.character.alpha = 1;
+                    this.counter = 0;
+                },this);
+                
                 game.time.events.add(Phaser.Timer.SECOND * 2, this.spawnItem, this); //After 2 seconds, spawn the item
                 this.type.destroy();
                 this.type = null;
@@ -144,7 +178,7 @@ class Item {
 
 
         //Depending on the random selection, spawn a random item
-        let itemSelect = Math.floor(Math.random() * 3); // A random number generator of integers from 0 to 1 used to randomly spawn an item
+        let itemSelect = Math.floor(Math.random() * 4); // A random number generator of integers from 0 to 1 used to randomly spawn an item
         let itemPosNeg = 0;
         let signChoice = Math.floor(Math.random() * 2);
         switch (signChoice) {
@@ -167,8 +201,12 @@ class Item {
                 this.type = game.add.sprite(game.world.width * .5 + (itemOffset * itemPosNeg), game.world.height * .5, 'bottle');
                 break;
             case 2:
+                this.type = game.add.sprite(game.world.width * .5 + (itemOffset * itemPosNeg), game.world.height * .5, 'book');
+                break;
+            case 3:
                 this.type = game.add.sprite(game.world.width * .5 + (itemOffset * itemPosNeg), game.world.height * .5, 'helmet');
                 break;
+                
         }
 
         game.physics.arcade.enable(this.type);
